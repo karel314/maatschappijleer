@@ -689,7 +689,7 @@
               "type": "choose_all_that_apply",
               "vraag": "Welke uitspraken over de Nederlandse gezondheidszorg zijn juist?",
               "opties": [
-                "De AWBZ betaalt kosten voor langdurige zorg zoals verpleeghuizen",
+                "De Wlz (Wet langdurige zorg) betaalt kosten voor langdurige zorg zoals verpleeghuizen",
                 "Iedereen is verplicht een basisverzekering af te sluiten",
                 "Verzekeraars mogen mensen weigeren voor het basispakket",
                 "Het basispakket wordt door de overheid vastgesteld",
@@ -700,7 +700,7 @@
                 1,
                 3
               ],
-              "uitleg": "De AWBZ dekt langdurige zorg (A). Iedereen moet een basisverzekering afsluiten (B) waarvan het pakket door de overheid wordt bepaald (D). Verzekeraars mogen niemand weigeren (C is onjuist). Het eigen risico is verplicht, niet vrijwillig (E is onjuist)."
+              "uitleg": "De Wlz (voorheen AWBZ, in 2015 vervangen) dekt langdurige zorg (A). Iedereen moet een basisverzekering afsluiten (B) waarvan het pakket door de overheid wordt bepaald (D). Verzekeraars mogen niemand weigeren (C is onjuist). Het eigen risico is verplicht, niet vrijwillig (E is onjuist)."
             },
             {
               "id": 50,
@@ -1016,7 +1016,7 @@
             {
               "id": 71,
               "type": "multiple_choice",
-              "vraag": "Nederlandse vaders krijgen slechts twee dagen betaald verlof bij de geboorte van hun kind. Dit kenmerk past bij:",
+              "vraag": "In Nederland nemen vrouwen veel vaker ouderschapsverlof op dan mannen, en werken veel vrouwen in deeltijd. Dit kenmerk past bij:",
               "opties": [
                 "de sociaaldemocratische verzorgingsstaat met uitgebreide verlofregelingen",
                 "de liberale verzorgingsstaat waar verlof een eigen verantwoordelijkheid is",
@@ -1024,7 +1024,7 @@
                 "geen enkel type verzorgingsstaat"
               ],
               "juiste_antwoord": 2,
-              "uitleg": "Beperkte verlofregeling en het feit dat vrouwen veel in deeltijd werken, passen bij de conservatief-corporatistische verzorgingsstaat waar het gezin centraal staat en traditionele rolverdeling gebruikelijker is. De sociaaldemocratische (A) biedt juist uitgebreid verlof. De liberale (B) wordt niet specifiek aan verlof gekoppeld."
+              "uitleg": "Het patroon dat vrouwen meer zorgtaken op zich nemen en vaker in deeltijd werken, past bij de conservatief-corporatistische verzorgingsstaat. In dit model staat het gezin centraal en worden traditionele rolpatronen impliciet ondersteund door het beleid. De sociaaldemocratische verzorgingsstaat (optie A) streeft juist naar gelijke verdeling. De liberale verzorgingsstaat (optie B) laat het aan de markt over."
             },
             {
               "id": 72,
@@ -1079,7 +1079,7 @@
               "opties": [
                 "Er is geen duidelijk verband tussen het type verzorgingsstaat en de welvaart in een land",
                 "Sociaaldemocratische verzorgingsstaten hebben de kleinste inkomensongelijkheid",
-                "Liberale verzorgingsstaten scoren het best op verbinding tussen autochtonen en allochtonen",
+                "Liberale verzorgingsstaten hebben het kleinste verschil in werkloosheid tussen autochtonen en allochtonen",
                 "De PISA-scores zijn duidelijk het hoogst in sociaaldemocratische landen",
                 "Er is geen duidelijk verband tussen type en levensverwachting"
               ],
@@ -1089,7 +1089,7 @@
                 2,
                 4
               ],
-              "uitleg": "Er is geen verband tussen type en welvaart (A) of levensverwachting (E). Sociaaldemocratische landen hebben de kleinste inkomensongelijkheid (B). Liberale landen scoren het best op werkloosheidsverschillen tussen autochtonen en allochtonen (C). De PISA-scores verschillen wel, maar er is geen duidelijk verband met het type (D is onjuist, Finland scoort hoog maar andere Scandinavische landen niet)."
+              "uitleg": "Er is geen duidelijk verband tussen type verzorgingsstaat en welvaart (A) of levensverwachting (E). Sociaaldemocratische landen hebben de kleinste inkomensongelijkheid (B). Liberale landen hebben het kleinste verschil in werkloosheid tussen autochtonen en allochtonen (C). PISA-scores vertonen geen duidelijk patroon per type (D is onjuist)."
             },
             {
               "id": 76,
@@ -1118,13 +1118,13 @@
               "type": "multiple_choice",
               "vraag": "De verzorgingsstaat is zelf een oorzaak van individualisering. Hoe komt dat?",
               "opties": [
-                "De overheid verbiedt mensen om voor elkaar te zorgen",
+                "De overheid verbiedt mensen om voor elkaar te zorgen via strenge regelgeving",
                 "Door de verzorgingsstaat zijn mensen niet meer afhankelijk van familie voor zorg en inkomen",
-                "De verzorgingsstaat maakt mensen egoistisch via propaganda",
+                "De verzorgingsstaat creëert zoveel bureaucratie dat mensen geen tijd meer hebben voor sociale contacten",
                 "Door hoge belastingen hebben mensen geen geld meer voor sociale activiteiten"
               ],
               "juiste_antwoord": 1,
-              "uitleg": "Dankzij de verzorgingsstaat hoeven ouderen niet meer bij hun kinderen aan te kloppen, werklozen niet bij hun familie, en is onderwijs voor iedereen toegankelijk. Dit maakt mensen onafhankelijker. De overheid verbiedt niets (A). Er is geen sprake van propaganda (C). Sociale activiteiten worden niet onmogelijk door belastingen (D)."
+              "uitleg": "Dankzij de verzorgingsstaat hoeven ouderen niet meer bij hun kinderen aan te kloppen, werklozen niet bij hun familie, en is onderwijs voor iedereen toegankelijk. Dit maakt mensen onafhankelijker van hun sociale omgeving — en daarmee individueler. De overheid verbiedt niet om voor elkaar te zorgen (optie A). Bureaucratie (optie C) en hoge belastingen (optie D) zijn geen verklaring voor individualisering."
             },
             {
               "id": 78,
@@ -1236,13 +1236,13 @@
               "type": "multiple_choice",
               "vraag": "Eurolanden mogen een begrotingstekort hebben van maximaal 3% van het bbp. Wat kan hiervan een gevolg zijn in een economische crisis?",
               "opties": [
-                "Landen mogen onbeperkt geld lenen om de crisis te bestrijden en de economie te stimuleren",
+                "Landen mogen onbeperkt geld lenen om de crisis te bestrijden en de economie volledig te stimuleren",
                 "Landen moeten bezuinigen of belastingen verhogen",
-                "De Europese Unie neemt alle uitkeringen over van de nationale overheden",
-                "Landen stappen uit de euro om meer te kunnen uitgeven aan sociale voorzieningen"
+                "De Europese Centrale Bank verlaagt automatisch de rente om het tekort op te vangen",
+                "Eurolanden mogen de regels tijdelijk opschorten zonder gevolgen"
               ],
               "juiste_antwoord": 1,
-              "uitleg": "Als de economie krimpt en het begrotingstekort dreigt boven de 3% te komen, moeten landen bezuinigen of belastingen verhogen om aan de EU-regels te voldoen. Onbeperkt lenen (A) is juist niet toegestaan. De EU neemt geen uitkeringen over (C). Uit de euro stappen (D) is niet de gebruikelijke reactie."
+              "uitleg": "Als de economie krimpt en het begrotingstekort dreigt boven de 3% te komen, moeten landen bezuinigen of belastingen verhogen om aan de EU-regels te voldoen. Onbeperkt lenen (optie A) is juist niet toegestaan. De ECB bepaalt het monetaire beleid onafhankelijk, niet automatisch als reactie op tekorten (optie C). Opschorting zonder gevolgen (optie D) is geen optie — er zijn sanctieprocedures."
             },
             {
               "id": 87,
@@ -1898,13 +1898,13 @@
               "type": "multiple_choice",
               "vraag": "Waarom werden er in de jaren zestig gastarbeiders naar Nederland gehaald?",
               "opties": [
-                "Om de Nederlandse cultuur te verrijken met buitenlandse invloeden en tradities uit andere werelddelen",
-                "Om de politieke relaties met Marokko en Turkije te verbeteren",
+                "Om de vergrijzing tegen te gaan door jonge buitenlandse arbeiders aan te trekken",
+                "Om de politieke relaties met Marokko en Turkije te verbeteren via arbeidsverdragen",
                 "Vanwege een tekort aan arbeidskrachten door de groeiende economie",
-                "Omdat de overheid de bevolkingsgroei wilde stimuleren"
+                "Omdat de overheid de bevolkingsgroei in de Randstad wilde stimuleren"
               ],
               "juiste_antwoord": 2,
-              "uitleg": "Na de wederopbouw groeide de economie snel en was er een tekort aan arbeidskrachten. Bedrijven haalden buitenlandse arbeiders (gastarbeiders) naar Nederland. Het ging om economische motieven, niet om culturele verrijking (A), politieke relaties (B) of bevolkingsgroei (D)."
+              "uitleg": "Na de wederopbouw groeide de economie snel en was er een tekort aan arbeidskrachten, vooral voor laaggeschoold fabriekswerk. Bedrijven haalden gastarbeiders naar Nederland. Vergrijzing (optie A) speelde destijds nog geen grote rol. Het ging niet om diplomatieke relaties (optie B) of bevolkingsgroei (optie D), maar puur om economische noodzaak."
             },
             {
               "id": 130,
@@ -2577,11 +2577,11 @@
               "opties": [
                 "Iemand die een misdaad heeft gepleegd in Nederland",
                 "Iemand die niet in het bezit is van een geldige verblijfsvergunning",
-                "Iemand die de Nederlandse taal niet spreekt",
+                "Iemand die geen inschrijving heeft bij een Nederlandse gemeente",
                 "Iemand die geen Nederlandse nationaliteit heeft"
               ],
               "juiste_antwoord": 1,
-              "uitleg": "Illegaal betekent in deze context: niet in het bezit van een geldige verblijfsvergunning en zonder toestemming om in Nederland te verblijven. Het gaat niet om criminaliteit (A), taalbeheersing (C) of nationaliteit (D). Veel legale inwoners hebben ook geen Nederlandse nationaliteit."
+              "uitleg": "Illegaal betekent in deze context: niet in het bezit van een geldige verblijfsvergunning en zonder toestemming om in Nederland te verblijven. Het gaat niet om criminaliteit (optie A) — illegaal verblijf is een bestuurlijke kwestie. Niet ingeschreven zijn bij een gemeente (optie C) maakt iemand niet per se illegaal. Buitenlanders met een geldige vergunning verblijven legaal, ook zonder nationaliteit (optie D)."
             },
             {
               "id": 175,
