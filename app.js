@@ -1,7 +1,8 @@
-// Maatschappijleer H3 + H4 - Quiz App
+// Quiz Platform Engine - Config-driven
 'use strict';
 
 // ── State ──
+let CONFIG = null;
 let db = null;
 let allQuestions = [];
 let quizQuestions = [];
@@ -16,129 +17,32 @@ let flashcards = [];
 let flashIndex = 0;
 let flashFlipped = false;
 
-const STORAGE_KEY = 'ml-h3h4-progress';
 const LETTERS = 'ABCDEFGHIJ';
 
-// ── Badge definitions ──
-const BADGES = {
-  1:  { name: 'Driehoekdenker',       emoji: '\u{2696}️' },
-  2:  { name: 'Verzorgingsstaat-historicus', emoji: '\u{1F3DB}️' },
-  3:  { name: 'Vangnetbouwer',         emoji: '\u{1F6E1}️' },
-  4:  { name: 'Kansencoach',           emoji: '\u{1F393}' },
-  5:  { name: 'Modellenkenner',        emoji: '\u{1F30D}' },
-  6:  { name: 'Toekomstdenker',        emoji: '\u{1F52E}' },
-  7:  { name: 'Datadetective',         emoji: '\u{1F4CA}' },
-  8:  { name: 'Identiteitskenner',     emoji: '\u{1FA9E}' },
-  9:  { name: 'Socialisatie-expert',   emoji: '\u{1F465}' },
-  10: { name: 'Migratiekenner',        emoji: '\u{2708}️' },
-  11: { name: 'Integratiepro',         emoji: '\u{1F91D}' },
-  12: { name: 'Tolerantiechampion',    emoji: '\u{1F3F3}️' },
-  13: { name: 'Beleidsanalist',        emoji: '\u{1F4CB}' },
-  14: { name: 'Statistiekmeester',     emoji: '\u{1F4C8}' }
-};
-
-// ── Encouragement messages ──
-const CORRECT_MSGS = [
-  'Daar kan geen minister tegenop!',
-  'Je kent de welfare triangle als de beste!',
-  'Slimmer dan een beleidsadviseur!',
-  'De Tweede Kamer zou je aannemen!',
-  'Bevlogen socioloog in wording!',
-  'Je weet meer dan menig Kamerlid!',
-  'Knap! Je kent het sociaal beleid op je duimpje!',
-  'Top! De verzorgingsstaat heeft geen geheimen voor jou!',
-  'Je beheerst de stof als een echte maatschappijwetenschapper!',
-  'Sterker dan een coalitieakkoord!',
-  'Beter dan een Prinsjesdag-speech!',
-  'De minister-president is onder de indruk!',
-  'Je navigeert door de politiek als een fractievoorzitter!',
-  'Sociaal vangnet? Jij vangt alles!',
-  'Daar kan de Raad van State van leren!',
-  'Je snapt sociale zekerheid beter dan een ambtenaar!',
-  'Goed bezig! De pluriforme samenleving kent geen geheimen voor jou!',
-  'Je bent een tolerantie-expert!',
-  'Daar zou Thorbecke trots op zijn!',
-  'De Grondwet kent geen betere verdediger!',
-  'Je hebt de identiteitsvraag gekraakt!',
-  'Socialisatie? Check! Dat zit wel goed!',
-  'Je kent je integratiemodellen als geen ander!',
-  'Migratie-expert! Ga zo door!',
-  'Zelfs het CBS is onder de indruk van jouw kennis!',
-  'Maatschappijleer-held! Proefwerk kan niet meer misgaan!',
-  'Je scoort hoger dan het gemiddeld rapportcijfer!',
-  'Klaar voor het proefwerk? Absoluut!',
-  'Je bent de verpersoonlijking van burgerschap!',
-  'Dat wist je sneller dan een spoeddebat!',
-  'Discriminatie herken jij van kilometers afstand!',
-  'Artikel 1 van de Grondwet leeft in jou!',
-  'Je weet alles over de participatiesamenleving!',
-  'De welvaartsstaat heeft geen geheimen meer voor jou!',
-  'Je bent klaar om premier te worden!'
-];
-
-const WRONG_MSGS = [
-  'Zelfs ministers maken fouten...',
-  'Niet getreurd, ook beleid wordt herzien!',
-  'Oeps! Maar zelfs de Grondwet is al 200 keer gewijzigd.',
-  'Geen stress, maatschappijleer is ook complex!',
-  'Foutje! Maar oefening baart een beleidsmaker.',
-  'Dat antwoord ging naar de verkeerde fractie!',
-  'Au! Maar de volgende vraag gaat beter.',
-  'Hmm, dat was meer oppositie dan coalitie.',
-  'Niet opgeven! De verzorgingsstaat is ook niet in een dag gebouwd!',
-  'Ach, ook Kamerleden moeten soms nadenken.',
-  'Foutje bedankt! Lees de uitleg even goed.',
-  'Net niet! Maar je komt er dichterbij.',
-  'Geen paniek, de volgende vraag is jouw doorbraak!',
-  'Mis! Maar je bent nog steeds in het spel.',
-  'Die zat er net naast, net als een motie die het niet haalt.',
-  'Niet getreurd, morgen weet je het wel!',
-  'Oeps! Maar je leert ervan, net als de maatschappij.',
-  'Dat antwoord was meer welvaartsstaatje dan verzorgingsstaat...',
-  'Hmm, dat was een misverstand in de welfare triangle.',
-  'Bijna! Net zo dichtbij als een debat om middernacht.',
-  'Niet erg, zelfs sociologen zijn het niet altijd eens.',
-  'Daar gaan we niet van uit onze stoel vallen!',
-  'Een foutje in de socialisatie, maar je herstelt snel!',
-  'Oeps! Maar integratie gaat ook stap voor stap.',
-  'Die was lastig! Probeer de flashcards.',
-  'Niet erg, zelfs het SCP doet soms een misgreep.',
-  'Mis! Maar je kunt het alsnog leren.',
-  'Daar trapte Bismarck ook al in...',
-  'Ach, zelfs Beveridge had af en toe ongelijk.',
-  'Dat was een klassieke verwarring. Nu weet je het beter!',
-  'Niet opgeven! Je bent nog maar een paar vragen van de top!'
-];
-
-const RESULTS_MSGS = {
-  perfect: [
-    'Absoluut briljant! Je bent klaar voor het proefwerk!',
-    'Perfecte score! De maatschappijleerleraar gaat steil achterover!'
-  ],
-  great: [
-    'Uitstekend! Je beheerst de stof als een echte socioloog!',
-    'Geweldig resultaat! Nog even de puntjes op de i.'
-  ],
-  good: [
-    'Goed bezig! Nog een paar rondes en je zit op een 10!',
-    'Prima score! Focus op de rode vragen en je bent er bijna.'
-  ],
-  okay: [
-    'Een goede start! Herhaal de zwakke leerdoelen.',
-    'Je bent op weg! Probeer de flashcards voor de moeilijke topics.'
-  ],
-  low: [
-    'Niet getreurd! De verzorgingsstaat is ook niet in een dag gebouwd.',
-    'Dit is je startpunt. Gebruik de flashcards en probeer opnieuw!'
-  ]
-};
-
 // ── Init ──
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const resp = await fetch('config.json');
+    CONFIG = await resp.json();
+    applyTheme(CONFIG.theme);
+    await init();
+  } catch (e) {
+    console.error('Failed to load config:', e);
+  }
+});
+
+function applyTheme(theme) {
+  const r = document.documentElement.style;
+  r.setProperty('--purple', theme.primary);
+  r.setProperty('--purple-light', theme.light);
+  r.setProperty('--purple-dark', theme.dark);
+  r.setProperty('--purple-bg', theme.bg);
+}
 
 async function init() {
   try {
-    const resp = await fetch('data/vragen.json');
+    const dataFile = (CONFIG.dataFiles && CONFIG.dataFiles[0]) || 'data/vragen.json';
+    const resp = await fetch(dataFile);
     db = await resp.json();
     flattenQuestions();
     setupConfigScreen();
@@ -179,7 +83,7 @@ function flattenQuestions() {
 // ── Progress helpers ──
 function getProgress() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultProgress();
+    return JSON.parse(localStorage.getItem(CONFIG.storageKey)) || defaultProgress();
   } catch { return defaultProgress(); }
 }
 
@@ -188,12 +92,12 @@ function defaultProgress() {
 }
 
 function saveProgress(p) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+  localStorage.setItem(CONFIG.storageKey, JSON.stringify(p));
 }
 
 function resetProgress() {
-  if (!confirm('Weet je zeker dat je alle voortgang wilt wissen? Dit kan niet ongedaan worden.')) return;
-  localStorage.removeItem(STORAGE_KEY);
+  if (!confirm(CONFIG.uiStrings.confirmReset)) return;
+  localStorage.removeItem(CONFIG.storageKey);
   updateBadgeShelf();
   updateHomeStats();
   renderProgressScreen();
@@ -281,8 +185,7 @@ function startQuiz() {
 // ── Exit quiz ──
 function exitQuiz() {
   if (answers.length > 0) {
-    if (!confirm('Wil je de quiz stoppen? Je voortgang wordt opgeslagen.')) return;
-    saveQuizProgress();
+    if (!confirm(CONFIG.uiStrings.confirmStop)) return;
   }
   showScreen('home');
 }
@@ -310,8 +213,8 @@ function renderQuestion() {
     imgContainer.appendChild(img);
   }
 
-  const typeLabels = { multiple_choice: 'Meerkeuze', choose_all_that_apply: 'Meerdere antwoorden', invullen: 'Invullen', volgorde: 'Volgorde' };
-  document.getElementById('question-type-badge').textContent = typeLabels[q.type] || q.type;
+  const tl = CONFIG.uiStrings.typeLabels;
+  document.getElementById('question-type-badge').textContent = tl[q.type] || q.type;
 
   const container = document.getElementById('options-container');
   container.innerHTML = '';
@@ -355,7 +258,7 @@ function submitMC(index) {
 function renderCATA(q, container) {
   const hint = document.createElement('div');
   hint.className = 'cata-hint';
-  hint.textContent = 'Selecteer alle juiste antwoorden';
+  hint.textContent = CONFIG.uiStrings.selectAll || 'Selecteer alle juiste antwoorden';
   container.appendChild(hint);
 
   q.opties.forEach((opt, i) => {
@@ -368,7 +271,7 @@ function renderCATA(q, container) {
 
   const submit = document.createElement('button');
   submit.className = 'btn-submit-multi';
-  submit.textContent = 'Controleer';
+  submit.textContent = CONFIG.uiStrings.check || 'Controleer';
   submit.addEventListener('click', () => submitCATA());
   container.appendChild(submit);
 }
@@ -414,7 +317,7 @@ function renderInvullen(q, container) {
   const input = document.createElement('input');
   input.type = 'text';
   input.className = 'invul-input';
-  input.placeholder = 'Typ je antwoord...';
+  input.placeholder = CONFIG.uiStrings.typAnswer || 'Typ je antwoord...';
   input.autocomplete = 'off';
   input.autocapitalize = 'off';
 
@@ -469,7 +372,7 @@ function submitInvullen(input) {
   if (!isCorrect) {
     const correctDiv = document.createElement('div');
     correctDiv.className = 'invul-correct-answer';
-    correctDiv.textContent = `Juiste antwoord: ${q.juiste_antwoord}`;
+    correctDiv.textContent = `${CONFIG.uiStrings.correctAnswer || 'Juiste antwoord'}: ${q.juiste_antwoord}`;
     document.getElementById('options-container').appendChild(correctDiv);
   }
 
@@ -493,7 +396,7 @@ function renderVolgorde(q, container) {
 
   const submit = document.createElement('button');
   submit.className = 'btn-submit-volgorde';
-  submit.textContent = 'Controleer volgorde';
+  submit.textContent = CONFIG.uiStrings.checkOrder || 'Controleer volgorde';
   submit.addEventListener('click', () => submitVolgorde());
   container.appendChild(submit);
 }
@@ -550,7 +453,7 @@ function submitVolgorde() {
     const correctText = correctLetters.map((letter, i) => `${i + 1}. ${q.opties[letter]}`).join(' → ');
     const correctDiv = document.createElement('div');
     correctDiv.className = 'invul-correct-answer';
-    correctDiv.textContent = 'Juiste volgorde: ' + correctText;
+    correctDiv.textContent = (CONFIG.uiStrings.correctOrder || 'Juiste volgorde') + ': ' + correctText;
     correctDiv.style.marginTop = '8px';
     correctDiv.style.fontSize = '0.85rem';
     correctDiv.style.lineHeight = '1.5';
@@ -578,15 +481,15 @@ function showFeedback(isCorrect, q) {
   panel.style.display = 'block';
 
   const result = document.getElementById('feedback-result');
-  result.textContent = isCorrect ? 'Goed!' : 'Helaas, fout!';
+  result.textContent = isCorrect ? CONFIG.uiStrings.correct : CONFIG.uiStrings.wrong;
   result.className = 'feedback-result ' + (isCorrect ? 'correct' : 'wrong');
 
-  const msgs = isCorrect ? CORRECT_MSGS : WRONG_MSGS;
+  const msgs = isCorrect ? CONFIG.correctMsgs : CONFIG.wrongMsgs;
   document.getElementById('feedback-encouragement').textContent = msgs[Math.floor(Math.random() * msgs.length)];
   document.getElementById('feedback-explanation').textContent = q.uitleg;
 
   const btn = document.getElementById('btn-next');
-  btn.textContent = currentIndex < quizQuestions.length - 1 ? 'Volgende' : 'Bekijk resultaten';
+  btn.textContent = currentIndex < quizQuestions.length - 1 ? CONFIG.uiStrings.next : CONFIG.uiStrings.seeResults;
 
   panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
@@ -601,8 +504,6 @@ function nextQuestion() {
     showResults();
   }
 }
-
-function saveQuizProgress() {}
 
 // ── Results ──
 function showResults() {
@@ -630,7 +531,7 @@ function showResults() {
   else if (pct >= 80) msgKey = 'great';
   else if (pct >= 60) msgKey = 'good';
   else if (pct >= 40) msgKey = 'okay';
-  const msgs = RESULTS_MSGS[msgKey];
+  const msgs = CONFIG.resultsMsgs[msgKey];
   document.getElementById('results-encouragement').textContent = msgs[Math.floor(Math.random() * msgs.length)];
 
   const breakdown = document.getElementById('results-leerdoel-breakdown');
@@ -673,7 +574,7 @@ function showResults() {
       missed.innerHTML += `
         <div class="missed-item">
           <div class="missed-q">${q.vraag}</div>
-          <div class="missed-a">Antwoord: ${correctText}</div>
+          <div class="missed-a">${CONFIG.uiStrings.answer || 'Antwoord'}: ${correctText}</div>
         </div>
       `;
     }
@@ -704,7 +605,7 @@ function checkNewBadges() {
     container.style.display = 'block';
     list.innerHTML = '';
     for (const bid of newBadges) {
-      const b = BADGES[bid];
+      const b = CONFIG.badges[bid];
       list.innerHTML += `<div class="new-badge-item"><div class="new-badge-emoji">${b.emoji}</div><div class="new-badge-name">${b.name}</div></div>`;
     }
   } else {
@@ -716,7 +617,7 @@ function updateBadgeShelf() {
   const p = getProgress();
   const shelf = document.getElementById('badge-shelf-list');
   shelf.innerHTML = '';
-  for (const [id, b] of Object.entries(BADGES)) {
+  for (const [id, b] of Object.entries(CONFIG.badges)) {
     const earned = p.badges[id]?.earned;
     shelf.innerHTML += `
       <div class="badge-item ${earned ? 'earned' : 'locked'}" ${earned ? `onclick="showBadgePopup(${id})"` : ''}>
@@ -728,11 +629,11 @@ function updateBadgeShelf() {
 }
 
 function showBadgePopup(id) {
-  const b = BADGES[id];
+  const b = CONFIG.badges[id];
   const p = getProgress();
   document.getElementById('badge-popup-icon').textContent = b.emoji;
   document.getElementById('badge-popup-title').textContent = b.name;
-  document.getElementById('badge-popup-desc').textContent = `Verdiend op ${p.badges[id]?.date || 'onbekend'}`;
+  document.getElementById('badge-popup-desc').textContent = `${CONFIG.uiStrings.earnedOn || 'Verdiend op'} ${p.badges[id]?.date || 'onbekend'}`;
   document.getElementById('badge-overlay').style.display = 'flex';
 }
 
@@ -745,11 +646,11 @@ function updateHomeStats() {
   const p = getProgress();
   const el = document.getElementById('home-stats');
   if (p.totalAnswered === 0) {
-    el.textContent = 'Begin met een quiz om je voortgang te zien!';
+    el.textContent = CONFIG.uiStrings.noProgress;
   } else {
     const pct = Math.round((p.totalCorrect / p.totalAnswered) * 100);
     const badgeCount = Object.values(p.badges).filter(b => b.earned).length;
-    el.textContent = `${p.totalAnswered} vragen beantwoord • ${pct}% goed • ${badgeCount}/${Object.keys(BADGES).length} badges`;
+    el.textContent = `${p.totalAnswered} vragen beantwoord • ${pct}% goed • ${badgeCount}/${Object.keys(CONFIG.badges).length} badges`;
   }
 }
 
@@ -772,7 +673,7 @@ function renderProgressScreen() {
   list.innerHTML = '';
   for (const ld of db.leerdoelen) {
     const m = getLeerdoelMastery(ld.leerdoel_id);
-    const badge = BADGES[ld.leerdoel_id];
+    const badge = CONFIG.badges[ld.leerdoel_id];
     const earned = p.badges[ld.leerdoel_id]?.earned;
     const color = m.pct >= 80 ? 'var(--green)' : m.pct >= 50 ? 'var(--orange)' : m.seen > 0 ? 'var(--red)' : 'var(--gray-border)';
 
@@ -893,7 +794,7 @@ function prevFlashcard() {
 
 // ── Confetti ──
 function spawnConfetti() {
-  const colors = ['#2563eb', '#60a5fa', '#f59e0b', '#ef4444', '#22c55e', '#ec4899'];
+  const colors = CONFIG.confettiColors || ['#2563eb', '#60a5fa', '#f59e0b', '#ef4444', '#22c55e', '#ec4899'];
   for (let i = 0; i < 40; i++) {
     const el = document.createElement('div');
     el.className = 'confetti';
