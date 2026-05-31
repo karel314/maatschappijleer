@@ -2,7 +2,7 @@
   "vak": "Maatschappijleer",
   "hoofdstuk": "H3 + H4",
   "scope": "H3 Verzorgingsstaat (§3.1-3.6) + H4 Pluriforme samenleving (§4.1-4.6)",
-  "totaal_vragen": 194,
+  "totaal_vragen": 193,
   "leerdoelen": [
     {
       "leerdoel_id": 1,
@@ -1261,19 +1261,6 @@
                 2
               ],
               "uitleg": "Globalisering zet de verzekeringsfunctie onder druk (werkloosheid door uitbesteding, A), vraagt om meer verheffing (betere opleiding om te concurreren, B) en bedreigt de verbindingsfunctie (hogere opgeleiden die niet willen delen met lager opgeleiden, C). De verzorgingsfunctie (D) wordt niet specifiek genoemd. Er is zeker wel een effect (E is onjuist)."
-            },
-            {
-              "id": 88,
-              "type": "volgorde",
-              "vraag": "Zet de vier bedreigingen voor de toekomst van de verzorgingsstaat in de volgorde waarin ze in de tekst worden behandeld.",
-              "opties": {
-                "A": "Globalisering",
-                "B": "Vergrijzing en ontgroening",
-                "C": "Europese Unie en begrotingsregels",
-                "D": "Individualisering"
-              },
-              "juiste_antwoord": "1:D, 2:B, 3:A, 4:C",
-              "uitleg": "In paragraaf 3.6 worden de bedreigingen in deze volgorde behandeld: eerst individualisering (D), dan vergrijzing en ontgroening (B), vervolgens globalisering (A), en ten slotte de Europese Unie met begrotingsregels (C)."
             },
             {
               "id": 89,
